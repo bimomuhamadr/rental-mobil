@@ -2,10 +2,6 @@
 <html>
 <?php
 date_default_timezone_set("Asia/Jakarta");
-// $tgl1 = date("d-M-Y");
-// $nilai = 10;
-// $tgl2 = date('d-M-Y', strtotime('+'.$nilai.' days', strtotime($tgl1)));
-// echo $tgl2;
 ?>
 <head>
     <meta charset="UTF-8">

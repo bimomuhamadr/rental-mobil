@@ -4,7 +4,7 @@ include 'config/config.php';
 date_default_timezone_set("Asia/Jakarta");
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 if(!isset($_SESSION['uid'])){
-echo"<script>document.location.href='login.php';</script>";
+echo"<script>document.location.href='homemobil.php?page=mobilhome&data=mobilhome';</script>";
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ echo"<script>document.location.href='login.php';</script>";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Admin Page | RentalMobil</title>
+    <title>RentalMobil</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Google Fonts -->
@@ -90,7 +90,7 @@ echo"<script>document.location.href='login.php';</script>";
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.php?page=home&data=home"><b>Admin - RentalMobil.com</b></a>
+                <a class="navbar-brand" href="index.php?page=home&data=home"><b>RentalMobil.com</b></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

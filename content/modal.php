@@ -614,7 +614,8 @@ date_default_timezone_set("Asia/Jakarta");
                     $total_harga = $_POST['total_harga'];
                     $status_sewa = $_POST['status_sewa'];
                     $status_bayar = $_POST['status_bayar'];
-                    $tglsewa = date('d F Y / H:i:s', strtotime($_POST['tgl_sewa']));     
+                    $tglsewa = date('d F Y / H:i:s', strtotime($_POST['tgl_sewa']));   
+                    $tglid = date('dmY', strtotime($_POST['tgl_sewa']));     
             }
         ?> 
 
@@ -625,7 +626,7 @@ date_default_timezone_set("Asia/Jakarta");
                         <tr>
                             <td width="30%">Id Transaksi</td>
                             <td width="5%">:</td>
-                            <td><b><?php echo $id_transaksi; ?></b></td>
+                            <td><b>RM/T/<?php echo $tglid; ?>/000<?php echo $id_transaksi; ?></b></td>
                         </tr>
                         <tr>
                             <td>Nama Customer</td>
@@ -880,6 +881,7 @@ date_default_timezone_set("Asia/Jakarta");
                     $sqllll = mysql_query("SELECT * FROM t_konfirmasi where id_transaksi = '$id_transaksi'");
                     $data3 = mysql_fetch_assoc($sqllll);
                     $buktibayar = $data3['gambar'];  
+                    $tglid = date('dmY', strtotime($_POST['tgl_sewa']));   
             }
         ?> 
 
@@ -890,7 +892,7 @@ date_default_timezone_set("Asia/Jakarta");
                         <tr>
                             <td width="30%">Id Transaksi</td>
                             <td width="5%">:</td>
-                            <td><b><?php echo $id_transaksi; ?></b></td>
+                            <td><b>RM/T/<?php echo $tglid; ?>/000<?php echo $id_transaksi; ?></b></td>
                         </tr>
                         <tr>
                             <td>Nama Customer</td>
@@ -996,9 +998,12 @@ date_default_timezone_set("Asia/Jakarta");
                 $sql = mysql_query("SELECT * FROM `t_konfirmasi` WHERE id_konfirmasi='$id_konfirmasi'");
                 while ($_POST = mysql_fetch_array($sql)) {
                     $id_transaksi = $_POST['id_transaksi'];
-                    $sqll = mysql_query("SELECT * FROM t_user where id_user = '$_POST[id_user]'");
+                    $sqll = mysql_query("SELECT * FROM t_transaksi where id_transaksi = '$_POST[id_transaksi]'");
                     $data1 = mysql_fetch_assoc($sqll);
-                    $namauser = $data1['nama_user'];
+                    $tglid = date('dmY', strtotime($data1['tgl_sewa']));   
+                    $sqlll = mysql_query("SELECT * FROM t_user where id_user = '$_POST[id_user]'");
+                    $data2 = mysql_fetch_assoc($sqlll);
+                    $namauser = $data2['nama_user'];
                     $tglkonfirmasi = date('d F Y / H:i:s', strtotime($_POST['tgl_konfirmasi'])); 
                     $buktibayar = $_POST['gambar'];
                     $ket = 1;
@@ -1015,7 +1020,7 @@ date_default_timezone_set("Asia/Jakarta");
                             <tr>
                                 <td width="30%">Nomor Transaksi</td>
                                 <td width="5%">:</td>
-                                <td><b><?php echo $id_transaksi; ?></b></td>
+                                <td><b>RM/T/<?php echo $tglid; ?>/000<?php echo $id_transaksi; ?></b></td>
                             </tr>
                             <tr>
                                 <td>Nama Customer</td>
