@@ -146,6 +146,14 @@ echo"<script>document.location.href='homemobil.php?page=mobilhome&data=mobilhome
                         </li>
                         <!----------------------------------------------- TRANSAKSI MOBIL --------------------------------------->
 
+                        <!----------------------------------------------- LAPORAN TRANSAKSI --------------------------------------->
+                        <li <?php if($_GET['data']=='laporantransaksi'){ echo "class=active"; } ?>>
+                            <a href="?page=laporantransaksi&data=laporantransaksi">
+                                <span>LAPORAN TRANSAKSI</span>
+                            </a>
+                        </li>
+                        <!----------------------------------------------- LAPORAN TRANSAKSI --------------------------------------->
+
                         <!----------------------------------------------- BUKTI BAYAR ----------------------------------------------->
                         <li <?php if($_GET['data']=='konfirmasi'){ echo "class=active"; } ?>>
                             <a href="?page=konfirmasi&data=konfirmasi">
@@ -238,6 +246,10 @@ echo"<script>document.location.href='homemobil.php?page=mobilhome&data=mobilhome
 
             case 'transaksimobil':
                 include "content/transaksimobil.php";
+                break;
+
+            case 'laporantransaksi':
+                include "content/laporantransaksi.php";
                 break;
 
             case 'konfirmasi':

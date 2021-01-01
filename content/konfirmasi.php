@@ -59,25 +59,28 @@
                                             $no++;                 
 
                                             echo "<tr>";
-                                                echo "<td>" . $no . "</td>";
-                                                echo "<td>" . $data['id_transaksi'] . "</td>";
-                                                $sqll = mysql_query("SELECT * FROM t_user where id_user = '$data[id_user]'");
-                                                $data1 = mysql_fetch_assoc($sqll);
-                                                $namauser = $data1['nama_user'];
-                                                echo "<td>" . $namauser . "</td>";
-                                                $date = date('d F Y / H:i:s', strtotime($data['tgl_konfirmasi']));
-                                                echo "<td>" . $date . "</td>";
-                                                if($data['ket']=='0'){
-                                                    echo "<td><span class='badge bg-red'>Belum di Lihat</span></td>";
-                                                }else{
-                                                    echo "<td><span class='badge bg-green'>Sudah di Lihat</span></td>";
-                                                }
-                                                echo '<td>
-                                               
-                                                    <a href="#DetailKonfirmasi" class="btn btn-info btn-xs waves-effect" data-toggle="modal" data-id="'.$data['id_konfirmasi'].'">
-                                                    <i class="material-icons">remove_red_eye</i></a>
+                                            echo "<td>" . $no . "</td>";
+                                            $sqll = mysql_query("SELECT * FROM t_transaksi where id_transaksi = '$data[id_transaksi]'");
+                                            $data1 = mysql_fetch_assoc($sqll);
+                                            $tglid = date('dmY', strtotime($data1['tgl_sewa']));  
+                                            echo "<td><b>RM/T/" . $tglid . "/000" . $data['id_transaksi'] . "</td>";
+                                            $sqll = mysql_query("SELECT * FROM t_user where id_user = '$data[id_user]'");
+                                            $data2 = mysql_fetch_assoc($sqll);
+                                            $namauser = $data2['nama_user'];
+                                            echo "<td>" . $namauser . "</td>";
+                                            $date = date('d F Y / H:i:s', strtotime($data['tgl_konfirmasi']));
+                                            echo "<td>" . $date . "</td>";
+                                            if($data['ket']=='0'){
+                                                echo "<td><span class='badge bg-red'>Belum di Lihat</span></td>";
+                                            }else{
+                                                echo "<td><span class='badge bg-green'>Sudah di Lihat</span></td>";
+                                            }
+                                            echo '<td>
+                                           
+                                                <a href="#DetailKonfirmasi" class="btn btn-info btn-xs waves-effect" data-toggle="modal" data-id="'.$data['id_konfirmasi'].'">
+                                                <i class="material-icons">remove_red_eye</i></a>
 
-                                                </td>';
+                                            </td>';
                                             echo "</tr>";
                                             }
                                         ?>
