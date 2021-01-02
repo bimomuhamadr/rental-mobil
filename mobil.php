@@ -17,7 +17,7 @@
                             }
                             else{
                                  echo "<span class='badge bg-red'>Tidak Tersedia</span><br><br>";
-                                echo '<a href="" class="btn btn-info waves-effect" disabled="disabled">Pesan Sekarang</a>';
+                                echo '<a href="" class="btn btn-info btn-xs waves-effect" disabled="disabled">Pesan Sekarang</a>';
                             }
                             echo '</p>';
                         echo '</div>';
