@@ -50,7 +50,7 @@ echo"<script>alert('Anda Tidak Memiliki Akses ! Silahkan Login Terlebih Dahulu')
                                             echo '<img src="images/mobil/'.$data['gambar'].'">';
                                             echo '<div class="caption">';
                                                 echo '<h3>'.$data['merk_mobil'].' '.$data['nama_mobil'].'</h3>';
-                                                echo '<p>Harga Sewa : Rp. ' . number_format($data['harga_sewa']) . ' ,- / Hari</p>';
+                                                echo '<h5>Harga Sewa : Rp. ' . number_format($data['harga_sewa']) . ' ,- / Hari</h5>';
                                                 echo '<p align=center>';
                                                 if($data['status_mobil']=='0'){
                                                     echo "<span class='badge bg-green'>Mobil Tersedia</span><br><br>";

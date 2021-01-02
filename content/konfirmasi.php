@@ -38,7 +38,7 @@
 
                         <?php
                         $tot = 0;
-                        $hasil = mysql_query("SELECT * FROM `t_konfirmasi` ORDER BY 'tgl_konfirmasi' DESC");
+                        $hasil = mysql_query("SELECT * FROM `t_konfirmasi` ORDER BY `t_konfirmasi`.`tgl_konfirmasi` DESC");
                         ?>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable" style="font-size: 13px;">

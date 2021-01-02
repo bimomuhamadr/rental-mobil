@@ -37,6 +37,9 @@ date_default_timezone_set("Asia/Jakarta");
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="crossorigin=""></script>
+
 </head>
 <script type="text/javascript" language="JavaScript">
      function konfirmasi(){
@@ -68,11 +71,10 @@ date_default_timezone_set("Asia/Jakarta");
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.php?page=home&data=home"><b>RentalMobil.com</b></a>
+                <a class="navbar-brand" href="index.php?page=home&data=home">Selamat Datang di <b>RentalMobil.com</b></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Call Search -->
                     <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
                 </ul>
             </div>
@@ -80,61 +82,44 @@ date_default_timezone_set("Asia/Jakarta");
     </nav>
     <!-- #Top Bar -->
 
-    <!-- CONTENT HERE --><hr><hr><hr>
-    <?php if($_GET['data']=="mobilhome") {?>
-        <div class="container-fluid">
-            <div class="block-header"><h2>Selamat Datang | RentalMobil.com</h2></div>
-                <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Pilihan Mobil untuk Anda
-                                <small>Silahkan Pilih Mobil yang Tersedia.</small>
-                            </h2>
-                        </div>
-                        <div class="body">
-                            <div class="row">
-                                <?php
-                                    $hasil = mysql_query("SELECT * FROM `t_mobil` ORDER BY merk_mobil ASC");
-                                    while ($data = mysql_fetch_array($hasil)) {
-                                    
-                                        echo '<div class="col-sm-6 col-md-4">';
-                                            echo '<div class="thumbnail">';
-                                                echo '<img src="images/mobil/'.$data['gambar'].'" width=70%>';
-                                                echo '<div class="caption">';
-                                                    echo '<h3>'.$data['merk_mobil'].' '.$data['nama_mobil'].'</h3>';
-                                                    echo '<h5>Harga Sewa : Rp. ' . number_format($data['harga_sewa']) . ' ,- / Hari</h5>';
-                                                    echo '<p align=center>';
-                                                    if($data['status_mobil']=='0'){
-                                                        echo "<span class='badge bg-green'>Mobil Tersedia</span><br><br>";
-                                                        echo '<a onclick="return konfirmasi()" href="login.php" class="btn btn-info btn-xs waves-effect">Pesan Sekarang</a>';
-                                                    }
-                                                    else{
-                                                         echo "<span class='badge bg-red'>Tidak Tersedia</span><br><br>";
-                                                        echo '<a href="" class="btn btn-info waves-effect" disabled="disabled">Pesan Sekarang</a>';
-                                                    }
-                                                    echo '</p>';
-                                                echo '</div>';
-                                            echo '</div>';
-                                        echo '</div>';
-                                    }
-                                ?>
-                            </div>
-                        </div>
+    <!-- CONTENT HERE -->
+    <div class="container-fluid">
+        <div class="block-header"></div>
+            <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header"></div>
+                    <div class="body">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation">
+                                    <a href="?page=mobilhome&data=mobilhome">BERANDA</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="?page=mobillacak&data=mobillacak">LACAK MOBIL</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="login.php">LOGIN</a>
+                                </li>
+                            </ul>
+                        </div>  
+                        <?php
+                        if (isset($_GET['page'])) {
+                            $page = $_GET['page'];
+                            switch ($page){                              
+                                case 'mobilhome':
+                                    include "mobil.php";
+                                    break;
+                                case 'mobillacak':
+                                    include "mobil.php";
+                                    break;
+                            }
+                        }
+                        ?>    
                     </div>
                 </div>
             </div>
-        </div>
-    <?php } else { ?> 
-        <div class="four-zero-four-container">
-            <div class="error-code">404</div>
-            <div class="error-message">This page doesn't exist</div>
-            <div class="button-place">
-                <a href="javascript:history.back()" class="btn btn-default btn-lg waves-effect">Kembali</a>
             </div>
-        </div>
-    <?php } ?>
     <!-- CONTENT HERE -->
 
     <!-- Jquery Core Js -->

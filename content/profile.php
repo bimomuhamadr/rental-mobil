@@ -29,7 +29,8 @@
                                     $alamat = $_POST['alamat'];
                                     $password = $_POST['password'];
                                 }
-                            ?>
+
+                            ?>  
 
                                 <form id="form_validation" class="form-horizontal" method="POST" action="?page=ubah&ubah=datauser">
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="<?php echo $id_user; ?>">

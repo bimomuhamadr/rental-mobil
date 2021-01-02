@@ -197,6 +197,7 @@ echo"<script>document.location.href='homemobil.php?page=mobilhome&data=mobilhome
                             </a>
                         </li>
                         <!----------------------------------------------- BERANDA ----------------------------------------------->
+                        
                         <!----------------------------------------------- TRANSAKSI ----------------------------------------------->
                         <li <?php if($_GET['data']=='transaksi'){ echo "class=active"; } ?>>
                             <a href="?page=transaksi&data=transaksi">
@@ -204,6 +205,15 @@ echo"<script>document.location.href='homemobil.php?page=mobilhome&data=mobilhome
                             </a>
                         </li>
                         <!----------------------------------------------- TRANSAKSI ----------------------------------------------->
+
+                        <!----------------------------------------------- LACAK ----------------------------------------------->
+                        <li <?php if($_GET['data']=='lacakmobil'){ echo "class=active"; } ?>>
+                            <a href="?page=lacakmobil&data=lacakmobil">
+                                <span>LACAK MOBIL</span>
+                            </a>
+                        </li>
+                        <!----------------------------------------------- LACAK ----------------------------------------------->
+
                         <!----------------------------------------------- PROFILE ----------------------------------------------->
                         <li <?php if($_GET['data']=='profile'){ echo "class=active"; } ?>>
                             <a href="?page=profile&data=profile">

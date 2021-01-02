@@ -30,25 +30,13 @@ include 'config/config.php';
 date_default_timezone_set('Asia/Jakarta');
 if(isset ($_POST['daftar-user'])){
 
-        $nik_ktp = $_POST['nik_ktp'];
-        $no_sim = $_POST['no_sim'];
         $email_user = $_POST['email_user'];
-        $sql = mysql_query("SELECT * FROM `t_user` WHERE nik_ktp='$nik_ktp'");
-        $sql2 = mysql_query("SELECT * FROM `t_user` WHERE no_sim='$no_sim'");
-        $sql3 = mysql_query("SELECT * FROM `t_user` WHERE email_user='$email_user'");
+        $sql = mysql_query("SELECT * FROM `t_user` WHERE email_user='$email_user'");
         $rows = mysql_num_rows($sql);
-        $rows2 = mysql_num_rows($sql2);
-        $rows3 = mysql_num_rows($sql3);
 
         if($rows>0){
-            echo '<script language="javascript">alert("NIK KTP Sudah di Gunakan !");
-            document.location="?page=user&data=user";</script>';
-        }elseif($rows2>0){
-            echo '<script language="javascript">alert("Nomor SIM Sudah di Gunakan !");
-            document.location="?page=user&data=user";</script>';
-        }elseif($rows3>0){
             echo '<script language="javascript">alert("Email Sudah di Gunakan !");
-            document.location="?page=user&data=user";</script>';
+            document.location="daftar.php";</script>';
         }else{
             $nik_ktp = $_POST['nik_ktp'];
             $no_sim = $_POST['no_sim'];
@@ -83,50 +71,10 @@ if(isset ($_POST['daftar-user'])){
                     <div class="msg">Silahkan Isi untuk Mendaftar</div>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">credit_card</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="nik_ktp" placeholder="NIK KTP" required autofocus>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">drive_eta</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="no_sim" placeholder="Nomor SIM" required autofocus>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">person</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="nama_user" placeholder="Nama Lengkap" required autofocus>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
                             <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
                             <input type="email" class="form-control" name="email_user" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">call</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP" required>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="material-icons">home</i>
-                        </span>
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
                         </div>
                     </div>
                     <div class="input-group">

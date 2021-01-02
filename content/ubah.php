@@ -115,7 +115,7 @@ if($_GET['ubah']=="mobil") {
 if($_GET['ubah']=="datauser") {
 
     if(isset($_POST['ubah-datauser'])){
-        
+
             $id_user = $_POST['id_user'];
             $nik_ktp = $_POST['nik_ktp'];
             $no_sim = $_POST['no_sim'];     

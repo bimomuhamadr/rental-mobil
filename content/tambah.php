@@ -115,29 +115,45 @@ if($_GET['tambah']=="pesanmobil") {
 
     if(isset ($_POST['simpan-pesanmobil'])){
 
-        $id_user = $_POST['id_user'];
-        $id_mobil = $_POST['id_mobil'];
+        $sqll = mysql_query("SELECT nik_ktp, no_sim, nama_user, no_hp, alamat FROM `t_user` WHERE id_user = '$_SESSION[iduser]'");
+        $data = mysql_fetch_assoc($sqll);
 
-        $status_mobil = 1;
+        $nik_ktp = $data['nik_ktp'];
+        $no_sim = $data['no_sim'];
+        $nama_user = $data['nama_user'];
+        $no_hp = $data['no_hp'];
+        $alamat = $data['alamat'];
 
-        $harga_sewa = $_POST['harga_sewa'];
-        $lama = $_POST['lama'];
-        $total_harga = $harga_sewa*$lama;
 
-        $tgl_ambil = $_POST['tgl_ambil'];
-        $tgl_kembali = date('Y-m-d', strtotime('+'.$lama.' days', strtotime($tgl_ambil)));
-
-        $tgl_sewa = date("Y-m-d H:i:s");
-
-        $sqll = "INSERT INTO `t_transaksi`(`id_user`,`id_mobil`,`lama`,`tgl_ambil`,`tgl_kembali`,`total_harga`,`tgl_sewa`,`status_sewa`,`status_bayar`,`ket`) VALUES ('$id_user','$id_mobil','$lama','$tgl_ambil','$tgl_kembali','$total_harga','$tgl_sewa','0','0','0')";
-
-        mysql_query("UPDATE `t_mobil` SET `status_mobil`='$status_mobil' WHERE `id_mobil`='$id_mobil'");
-        
-        if(mysql_query($sqll)){
-            echo '<script language="javascript">alert("Berhasil Pesan Mobil !");document.location="?page=homemobil&data=homemobil";</script>';
+        if (!$nik_ktp OR !$no_sim OR !$nama_user OR !$no_hp OR !$alamat) {
+            echo '<script language="javascript">alert("Lengkapi Data Anda untuk Pesan Mobil !");
+            document.location="?page=profile&data=profile";</script>';
         }else{
-            echo '<script language="javascript">alert("Gagal Pesan Mobil !");document.location="?page=homemobil&data=homemobil";</script>';
-        }
+
+            $id_user = $_POST['id_user'];
+            $id_mobil = $_POST['id_mobil'];
+
+            $status_mobil = 1;
+
+            $harga_sewa = $_POST['harga_sewa'];
+            $lama = $_POST['lama'];
+            $total_harga = $harga_sewa*$lama;
+
+            $tgl_ambil = $_POST['tgl_ambil'];
+            $tgl_kembali = date('Y-m-d', strtotime('+'.$lama.' days', strtotime($tgl_ambil)));
+
+            $tgl_sewa = date("Y-m-d H:i:s");
+
+            $sqll = "INSERT INTO `t_transaksi`(`id_user`,`id_mobil`,`lama`,`tgl_ambil`,`tgl_kembali`,`total_harga`,`tgl_sewa`,`status_sewa`,`status_bayar`,`ket`) VALUES ('$id_user','$id_mobil','$lama','$tgl_ambil','$tgl_kembali','$total_harga','$tgl_sewa','0','0','0')";
+
+            mysql_query("UPDATE `t_mobil` SET `status_mobil`='$status_mobil' WHERE `id_mobil`='$id_mobil'");
+        
+            if(mysql_query($sqll)){
+                echo '<script language="javascript">alert("Berhasil Pesan Mobil !");document.location="?page=homemobil&data=homemobil";</script>';
+            }else{
+                echo '<script language="javascript">alert("Gagal Pesan Mobil !");document.location="?page=homemobil&data=homemobil";</script>';
+            }
+        }        
 
     }
 }
